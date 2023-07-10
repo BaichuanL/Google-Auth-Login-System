@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Signup</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <main style="padding: 3rem">
+      <form action="/auth/signup" method="POST">
+        <%- include ("partials/message") %>
+        <div class="form-group">
+          <label for="exampleUsername">姓名：</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="exampleUsername"
+            required
+            minlength="3"
+            maxlength="255"
+          />
+          <small class="form-text text-muted">請輸入您的全名。</small>
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="exampleInputEmail1">信箱地址：</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="email"
+            required
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >我們不會與其他人分享你的信箱。</small
+          >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="exampleInputPassword1">密碼：</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            maxlength="1024"
+            name="password"
+            required
+          />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">註冊用戶</button>
+      </form>
+    </main>
+  </body>
+</html>

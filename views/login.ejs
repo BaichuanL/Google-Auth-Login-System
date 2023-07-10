@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <main style="padding: 3rem">
+      <div class="row">
+        <div ass="col-md-12">
+          <a
+            class="btn btn-lg btn-google"
+            style="
+              padding: 0.2rem 0.5rem;
+              background-color: rgb(7, 7, 7);
+              color: rgb(255, 255, 255);
+            "
+            href="/auth/google"
+            ><img
+              src="https://img.icons8.com/color/16/000000/google-logo.png"
+            />
+            透過Google登入</a
+          >
+        </div>
+      </div>
+      <hr />
+      <h5>已經註冊過一個帳戶？您可以在此登錄：</h5>
+      <form action="/auth/login" method="POST">
+        <%- include ("partials/message") %>
+        <div class="form-group">
+          <label for="exampleInputEmail1">信箱地址：</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="username"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >我們不會與其他人分享你的信箱。</small
+          >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="exampleInputPassword1">密碼：</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            name="password"
+          />
+        </div>
+        <br />
+        <button class="btn btn-primary">會員登入</button>
+      </form>
+    </main>
+  </body>
+</html>

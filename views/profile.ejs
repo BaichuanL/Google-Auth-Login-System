@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>個人檔案頁面</title>
+    <style>
+      .posts {
+        padding: 2rem;
+      }
+      section.user-info img {
+        border-radius: 50%;
+        display: inline-block;
+        padding: 1rem 0.5rem;
+      }
+      section.user-info h1 {
+        padding: 1rem 0.5rem;
+      }
+      .flex-container {
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <section class="user-info">
+      <div class="flex-container">
+        <img src="<%= user.thumbnail %>" alt="個人圖片" />
+        <h1><%= user.name %>的個人檔案頁面</h1>
+      </div>
+      <ul>
+        <li>Google的ID為： <%= user.googleID %></li>
+        <li>時間為：<%= user.date %></li>
+      </ul>
+    </section>
+
+    <section class="posts">
+      <% for (let i = 0; i < posts.length; i++) { %>
+      <div class="card" style="width: 18rem; margin: 1rem">
+        <div class="card-body">
+          <h5 class="card-title"><%= posts[i].title %></h5>
+          <p class="card-text"><%- posts[i].content %></p>
+          <a href="#" class="btn btn-primary"><%= posts[i].date %> </a>
+        </div>
+      </div>
+      <% } %>
+    </section>
+  </body>
+</html>
