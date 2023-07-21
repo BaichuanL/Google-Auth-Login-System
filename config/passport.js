@@ -5,14 +5,14 @@ const LocalStrategy = require("passport-local");
 const bcrypt = require("bcrypt");
 
 passport.serializeUser((user, done) => {
-  console.log("Serialize使用者。。。");
+  console.log("Serialize users...");
   done(null, user._id); // 將mongoDB的id，存在session
   // 並且將id簽名後，以Cookie的形式給使用者。。。
 });
 
 passport.deserializeUser(async (_id, done) => {
   console.log(
-    "Deserialize使用者。。。使用serializeUser儲存的id，去找到資料庫內的資料"
+    "Deserialize users... Use the id stored by serializeUser to find the data in the database"
   );
   let foundUser = await User.findOne({ _id });
   done(null, foundUser); // 將req.user這個屬性設定為foundUser
@@ -26,13 +26,13 @@ passport.use(
       callbackURL: "/auth/google/redirect",
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log("進入Google Strategy的區域");
+      console.log("Enter the area of Google Strategy");
       let foundUser = await User.findOne({ googleID: profile.id }).exec();
       if (foundUser) {
-        console.log("使用者已經註冊過了。無須存入資料庫內。");
+        console.log("The user has already registered. No need to store in the database.");
         done(null, foundUser);
       } else {
-        console.log("偵測到新用戶。須將資料存入資料庫內");
+        console.log("New user detected. Data must be stored in the database");
         let newUser = new User({
           name: profile.displayName,
           googleID: profile.id,
@@ -40,7 +40,7 @@ passport.use(
           email: profile.emails[0].value,
         });
         let savedUser = await newUser.save();
-        console.log("成功創建新用戶。");
+        console.log("The new user is created successfully. Procedure");
         done(null, savedUser);
       }
     }

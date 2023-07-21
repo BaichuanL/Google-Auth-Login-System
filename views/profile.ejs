@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include ("partials/header") %>
-    <title>個人檔案頁面</title>
+    <title>Profile page</title>
     <style>
       .posts {
         padding: 2rem;
@@ -26,11 +26,11 @@
     <section class="user-info">
       <div class="flex-container">
         <img src="<%= user.thumbnail %>" alt="個人圖片" />
-        <h1><%= user.name %>的個人檔案頁面</h1>
+        <h1><%= user.name %>'s personal profile page</h1>
       </div>
       <ul>
-        <li>Google的ID為： <%= user.googleID %></li>
-        <li>時間為：<%= user.date %></li>
+        <li>Google ID: <%= user.googleID %></li>
+        <li>Date: <%= user.date %></li>
       </ul>
     </section>
 

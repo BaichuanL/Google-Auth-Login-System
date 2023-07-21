@@ -29,7 +29,7 @@ router.get(
 router.post("/signup", async (req, res) => {
   let { name, email, password } = req.body;
   if (password.length < 8) {
-    req.flash("error_msg", "密碼長度過短，至少需要8個數字或英文字。");
+    req.flash("error_msg", "The password is too short, at least eight digits or English characters are required.");
     return res.redirect("/auth/signup");
   }
 
@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
   if (foundEmail) {
     req.flash(
       "error_msg",
-      "信箱已經被註冊。請使用另一個信箱，或者嘗試使用此信箱登入系統"
+      "The mailbox has been registered. Please use a different mailbox or try to log in using this mailbox"
     );
     return res.redirect("/auth/signup");
   }
@@ -46,7 +46,7 @@ router.post("/signup", async (req, res) => {
   let hashedPassword = await bcrypt.hash(password, 12);
   let newUser = new User({ name, email, password: hashedPassword });
   await newUser.save();
-  req.flash("success_msg", "恭喜註冊成功! 現在可以登入系統了!");
+  req.flash("success_msg", "Congratulations on successful registration! Now you can log in!");
   return res.redirect("/auth/login");
 });
 
@@ -54,7 +54,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     failureRedirect: "/auth/login",
-    failureFlash: "登入失敗。帳號或密碼不正確。",
+    failureFlash: "Login failed. The account or password is incorrect.",
   }),
   (req, res) => {
     return res.redirect("/profile");
@@ -62,7 +62,7 @@ router.post(
 );
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  console.log("進入redirect區域");
+  console.log("Enter the redirect");
   return res.redirect("/profile");
 });
 

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Google與本地登入系統</a>
+    <a class="navbar-brand" href="#">Google and local login system</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,23 +14,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="/">首頁</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <% if (!user) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/login">會員登入</a>
+          <a class="nav-link" href="/auth/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">註冊會員</a>
+          <a class="nav-link" href="/auth/signup">Register</a>
         </li>
         <% } %> <% if (user) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/logout">登出系統</a>
+          <a class="nav-link" href="/auth/logout">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/profile">個人檔案</a>
+          <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/profile/post">製作新的Post</a>
+          <a class="nav-link" href="/profile/post">Now Post</a>
         </li>
         <% } %>
       </ul>

@@ -25,7 +25,7 @@ router.post("/post", authCheck, async (req, res) => {
     await newPost.save();
     return res.redirect("/profile");
   } catch (e) {
-    req.flash("error_msg", "標題與內容都需要填寫。");
+    req.flash("error_msg", "The title and content should be filled in.");
     return res.redirect("/profile/post");
   }
 });
